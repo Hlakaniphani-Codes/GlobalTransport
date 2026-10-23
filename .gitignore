@@ -1,0 +1,23 @@
+# Environment configuration (keep the examples)
+**/.env
+**/.env.*
+!**/.env.example
+
+# Dependencies and generated output
+**/node_modules/
+**/dist/
+**/build/
+**/coverage/
+**/.expo/
+**/.vite/
+**/.turbo/
+**/*.tsbuildinfo
+
+# Logs and local tooling
+**/*.log
+**/.DS_Store
+loadtest/tokens.json
+loadtest/fixtures.json
+**/.idea/
+**/.vscode/*
+!**/.vscode/extensions.json

@@ -1,0 +1,85 @@
+@import '@fontsource-variable/dm-sans';
+@import '@fontsource-variable/manrope';
+
+:root {
+  --grt-primary: #1769AA;
+  --grt-primary-dark: #0C3555;
+  --grt-primary-light: #E9F4FB;
+  --grt-navy: #102D46;
+  --grt-navy-soft: #1A405D;
+  --grt-accent: #C8EF75;
+  --grt-background: #F3F7FA;
+  --grt-text: #142B3E;
+  --grt-text-secondary: #667B8D;
+  --grt-border: #DCE6ED;
+  --grt-error: #B42318;
+  --grt-success: #16803C;
+  font-family: 'DM Sans Variable', sans-serif;
+  color: var(--grt-text);
+  background: var(--grt-background);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  font-size: 90%;
+}
+
+button,
+input,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--grt-primary);
+  outline-offset: 3px;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+a {
+  color: inherit;
+}

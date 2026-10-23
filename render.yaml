@@ -1,0 +1,53 @@
+databases:
+  - name: global-ride-postgres
+    databaseName: global_ride_transport
+    user: global_ride_transport
+
+services:
+  - type: web
+    name: global-ride-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm ci
+    preDeployCommand: npm run migrate
+    startCommand: npm start
+    healthCheckPath: /health/ready
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: "production"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: global-ride-postgres
+          property: connectionString
+      - key: DATABASE_SSL
+        value: "false"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: METRICS_TOKEN
+        generateValue: true
+      - key: CORS_ORIGINS
+        sync: false
+      - key: DB_POOL_MAX
+        value: "10"
+      - key: TRIP_START_WINDOW_MINUTES
+        value: "90"
+      - key: LATE_CANCELLATION_HOURS
+        value: "2"
+
+  - type: web
+    name: global-ride-admin
+    runtime: static
+    rootDir: admin
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    autoDeploy: true
+    envVars:
+      - key: VITE_API_URL
+        sync: false
+      - key: VITE_SUPPORT_EMAIL
+        sync: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

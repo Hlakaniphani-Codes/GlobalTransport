@@ -18,7 +18,7 @@ Copy each folder's `.env.example` to `.env` and set values for the environment. 
 | `backend/.env` | `JWT_SECRET` | Secret used to sign and verify sessions; required before the API starts. Use a long, randomly generated value. |
 | `backend/.env` | `NODE_ENV` | Runtime environment, such as `development` or `production`. |
 | `backend/.env` | `PORT` | API listen port (defaults to `3000`). |
-| `backend/.env` | `CORS_ORIGINS` | Comma-separated allowed web origins; configure the deployed admin origin. |
+| `backend/.env` | `CORS_ORIGINS` | Exact comma-separated web origins in production; local development automatically permits localhost and private-LAN web origins. |
 | `backend/.env` | `DATABASE_SSL` | Enable PostgreSQL TLS when required by the database host. |
 | `backend/.env` | `DB_POOL_MAX` | Maximum PostgreSQL connection pool size (defaults to `10`). |
 | `backend/.env` | `DB_POOL_MIN`, `DB_IDLE_TIMEOUT_MS`, `DB_CONNECT_TIMEOUT_MS` | PostgreSQL pool minimum, idle timeout (30,000 ms default), and connection timeout (5,000 ms default). |
@@ -56,7 +56,7 @@ Copy each folder's `.env.example` to `.env` and set values for the environment. 
 | `mobile/.env` | `APP_IDENTIFIER`, `EAS_PROJECT_ID` | Expo/EAS application identity; `EAS_PROJECT_ID` is required for Expo push-token registration. |
 | `mobile/.env` | `IOS_BUILD_NUMBER`, `ANDROID_VERSION_CODE` | Platform-specific release build numbers. |
 
-For a physical phone or Android emulator, replace `localhost` in `EXPO_PUBLIC_API_URL` with an address that the device can reach. Expo `EXPO_PUBLIC_` values are bundled into the client and must not contain secrets.
+For local network testing, the API and admin development server bind to all interfaces. Replace `localhost` in `EXPO_PUBLIC_API_URL` with the development computer's LAN IP so a physical device can reach it. Development browser origins on localhost, private IPv4 networks, and `.local` names are allowed by the API; production still requires exact `CORS_ORIGINS` entries. Keep the computer's firewall enabled and use trusted networks. Expo `EXPO_PUBLIC_` values are bundled into the client and must not contain secrets.
 
 ## Database setup
 
